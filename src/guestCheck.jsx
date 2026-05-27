@@ -27,7 +27,8 @@ export function GuestCheck() {
     );
 
     if (isInvited) {
-      setMessage(`Welcome, ${guestName.trim()}!`);
+      const fmtdGuestName = guestName.replace(/(?<!')\b\w/g, char => char.toUpperCase());
+      setMessage(`Welcome, ${fmtdGuestName.trim()}!`);
       setAccessGranted(true);
     } else {
       setMessage("Sorry, you are not invited.");
