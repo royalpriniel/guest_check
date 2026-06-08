@@ -23,11 +23,11 @@ export function GuestCheck() {
     e.preventDefault();
     
     const isInvited = guestList.some(
-      guest => guest.toLowerCase().includes(guestName.trim().toLowerCase())
-    );
+      guest => guestName.trim().toLowerCase().includes(guest.toLowerCase()));
 
     if (isInvited) {
-      const fmtdGuestName = guestName.replace(/(?<!')\b\w/g, char => char.toUpperCase());
+      const lowcGuestName= guestName.toLowerCase();
+      const fmtdGuestName = lowcGuestName.replace(/(?<!')\b\w/g, char => char.toUpperCase());
       setMessage(`Welcome, ${fmtdGuestName.trim()}!`);
       setAccessGranted(true);
     } else {
@@ -94,3 +94,4 @@ export function GuestCheck() {
     </div>
   );
 }
+
